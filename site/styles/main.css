@@ -1,0 +1,17 @@
+/* from general to specific */
+.block{
+	display:block;
+}
+.txtValuesForArray{
+	width:300px;
+}
+.result{
+	margin:20px;
+	border-radius:10px;
+	padding:0 5px;
+	background-color:#CCCCCC;
+}
+.jsLabelText{
+	display:inline-block;
+	padding:0 10px 0 0;
+}

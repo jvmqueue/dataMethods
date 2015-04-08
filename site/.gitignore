@@ -1,0 +1,13 @@
+# Object file
+*.o
+
+# Ada Library Information
+*.ali
+
+node_modules
+resources
+scripts/minified
+
+CodeView 1.2.1.zip
+*Archive*.*
+WouterBos-Codeview-af9a5bf/
