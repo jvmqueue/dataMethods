@@ -25,8 +25,8 @@ define(['amdRegex'], function(utilRegEx){
             var $textNode = $(e.data.textNode);
             var intIndex = parseInt( $textNode.val() );
             var strFromRegEx = null;
-            delete lclArray[intIndex];
-            var strFromArray = lclArray.join(',');
+            delete lclArray[intIndex]; // lclArray[intIndex] now undefined, leaving element empty
+            var strFromArray = lclArray.join(','); // allows us to use regEx
 
             strFromRegEx = utilRegEx.fnc.removeAndReplaceChars(strFromArray, ',,', ','); // remove delineator, essentially removing empty values after delete method*/
             strFromRegEx = utilRegEx.fnc.removeFirstChar(strFromRegEx, ','); // remove leading ','
