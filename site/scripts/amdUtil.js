@@ -1,6 +1,6 @@
 define(['amdRegex'], function(utilRegEx){
     var w = window, d = document, $ = jQuery;
-    var lclArray = []; // array to maintain state between calls
+    var mArray = []; // array to maintain state between calls
 
     var appendFragment = function(options){
         var frag = d.createDocumentFragment();
@@ -37,41 +37,70 @@ define(['amdRegex'], function(utilRegEx){
             var $textNode = $(e.data.textNode);
             var intIndex = parseInt( $textNode.val() );
             var strFromRegEx = null;
-            delete lclArray[intIndex]; // lclArray[intIndex] now undefined, leaving element empty
-            var strFromArray = lclArray.join(','); // allows us to use regEx
+            delete mArray[intIndex]; // mArray[intIndex] now undefined, leaving element empty
+            var strFromArray = mArray.join(','); // allows us to use regEx
 
             strFromRegEx = utilRegEx.fnc.removeAndReplaceChars(strFromArray, ',,', ','); // remove delineator, essentially removing empty values after delete method*/
             strFromRegEx = utilRegEx.fnc.removeFirstChar(strFromRegEx, ','); // remove leading ','
             strFromRegEx = utilRegEx.fnc.removeEndChars(strFromRegEx, ','); // remove 50 ending ','
 
 
-            lclArray = strFromRegEx.split(','); // repopulate array after regEx work
+            mArray = strFromRegEx.split(','); // repopulate array after regEx work
             appendFragment({
                 label:'Array Values After Remove Element',
                 nodeExist:d.getElementById('result'),
-                text:lclArray.join()
+                text:mArray.join()
             });           
         },
         populateLclArrayFromString:function(e){ // populate array from string
             var $textNode = $(e.data.textNode);
             var strFromNode = $textNode.val();
-            lclArray = strFromNode.split(' ');
+            mArray = strFromNode.split(' ');
 
             appendFragment({
                 label:'Initial Array Values',
                 nodeExist:d.getElementById('result'),
-                text:lclArray.join()
+                text:mArray.join()
+            });        
+        },
+        arrayShift:function(e){
+            mArray.shift();
+
+            appendFragment({
+                label:'Array Values After Shift',
+                nodeExist:d.getElementById('result'),
+                text:mArray.join()
+            });        
+        },
+        arrayPop:function(e){
+            mArray.pop();
+
+            appendFragment({
+                label:'Array Values After Pop',
+                nodeExist:d.getElementById('result'),
+                text:mArray.join()
+            });        
+        },        
+        populateLclArrayFromString:function(e){ // populate array from string
+            var $textNode = $(e.data.textNode);
+            var strFromNode = $textNode.val();
+            mArray = strFromNode.split(' ');
+
+            appendFragment({
+                label:'Initial Array Values',
+                nodeExist:d.getElementById('result'),
+                text:mArray.join()
             });        
         },
         populateLclArrayFromHash:function(paramHash){
             var hash = paramHash;
             for(var name in hash){
                 var value = hash[name];
-                lclArray.push(value);            
+                mArray.push(value);            
             }
         },
         getLclArray:function(){ // privaledged is puplic but has access to private members
-            return lclArray;
+            return mArray;
         },
         causeFocus:function(paramStrId){
             $('#' + paramStrId).focus();
