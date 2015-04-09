@@ -24,17 +24,21 @@
 </ul>
 </ul>
 <h4>Fundemental Architecture</h4>
-<dl>
-	<dt>dataMethods/site/</dt>
-	<dd>html resources</dd>
-	<dt>styles</dt>
-	<dd>CSS resources</dd>
-	<dt>scripts</dt>
-	<dd>JS resources</dd>
-	<dd>base/jquery-1.11.2.js</dd>	
-	<dd>base/require-2.1.17.js</dd>	
-</dl>
-
+<div>
+	<pre>
+		<code>
+			├── site
+			│   ├── html resources
+			│   ├── styles
+			│   │   └── CSS resources
+			│   ├── scripts
+			│   │     └── JS resources
+			│   │     └── base
+			│   │         └── jquery-1.11.2.js
+			│   │         └── require-2.1.17.js			            
+		</code>
+	</pre>
+</div>
 
 
  
