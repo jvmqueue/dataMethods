@@ -1,12 +1,22 @@
 /* from general to specific */
+fieldset{
+	border-radius:10px;
+}
+.container{
+	width:50%;
+	margin:auto;
+}
 .block{
 	display:block;
+}
+.info{
+	background-color:#FFFAAE;
 }
 .txtValuesForArray{
 	width:300px;
 }
 .result{
-	margin:20px;
+	margin:20px 0;
 	border-radius:10px;
 	padding:0 5px;
 	background-color:#CCCCCC;
