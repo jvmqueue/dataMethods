@@ -16,7 +16,7 @@
 </ul>
 <h3>Stategies and Techniques</h3>
 <ul>
-	<li>Require JS for AMD pattens, lazy loading</li>
+	<li>Require JS for AMD pattens, and lazy loading</li>
 	<li>Object Instances to store data for unique objects</li>
 	<li>CSS3 for presentation and use for JavaScript node manipulation, JS only sets CSS classes</li>
 	<li>jQuery for DOM access</li>
