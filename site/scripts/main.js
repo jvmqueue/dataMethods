@@ -1,4 +1,4 @@
-require(['amdUtil'], function(util){
+require(['amdUtil'], function(util){ // want to load and use modules
 	
 	var w = window, d = document, $ = jQuery;
 
