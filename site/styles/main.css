@@ -21,6 +21,9 @@ fieldset{
 	padding:0 5px;
 	background-color:#CCCCCC;
 }
+.hide{
+	visibility:hidden;
+}
 .jsLabelText{
 	display:inline-block;
 	padding:0 10px 0 0;
