@@ -29,6 +29,11 @@ define(['amdRegex'], function(utilRegEx){
         }
     };
 
+    var showOtherDisplayFields = function(){
+        var $nodes = $('.optionHide');
+         $nodes.removeClass('optionHide');
+    };
+
     var _fnc = { // intended public API
         setListener:function(options){           
             options.$node.on(options.event, options.data, options.listener);
@@ -51,17 +56,6 @@ define(['amdRegex'], function(utilRegEx){
                 nodeExist:d.getElementById('result'),
                 text:mArray.join()
             });           
-        },
-        populateLclArrayFromString:function(e){ // populate array from string
-            var $textNode = $(e.data.textNode);
-            var strFromNode = $textNode.val();
-            mArray = strFromNode.split(' ');
-
-            appendFragment({
-                label:'Initial Array Values',
-                nodeExist:d.getElementById('result'),
-                text:mArray.join()
-            });        
         },
         arrayShift:function(e){
             mArray.shift();
@@ -90,7 +84,10 @@ define(['amdRegex'], function(utilRegEx){
                 label:'Initial Array Values',
                 nodeExist:d.getElementById('result'),
                 text:mArray.join()
-            });        
+            });
+            
+            // array populated, show other page options
+            showOtherDisplayFields();        
         },
         populateLclArrayFromHash:function(paramHash){
             var hash = paramHash;
