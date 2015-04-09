@@ -9,12 +9,24 @@ define(['amdRegex'], function(utilRegEx){
         var nodeNew = d.createElement('div');
         var nodeLabel = d.createElement('span');
         var nodeLabelText = d.createTextNode(options.label + ':');
+        var strClass = null;
         nodeLabel.setAttribute('class', 'jsLabelText');
         nodeLabel.appendChild(nodeLabelText);
         nodeNew.appendChild(nodeLabel);
         nodeNew.appendChild(nodeText);
         frag.appendChild(nodeNew);
         nodeExist.appendChild(frag);
+        showNode(nodeExist);
+    };
+
+    var showNode = function(paramNodeExist){
+        var node = paramNodeExist;
+        var strClass = node.getAttribute('class');
+        
+        if(strClass.indexOf('hide') >= 0){
+            strClass = utilRegEx.fnc.removeAndReplaceChars(strClass, 'hide', '');
+            node.setAttribute('class', strClass);
+        }
     };
 
     var _fnc = { // intended public API
