@@ -32,6 +32,7 @@ define(['amdRegex'], function(utilRegEx){
     var showOtherDisplayFields = function(){
         var $nodes = $('.optionHide');
          $nodes.removeClass('optionHide');
+         $nodes.addClass('jsTransistion');
     };
 
     var _fnc = { // intended public API
