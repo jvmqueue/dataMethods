@@ -26,14 +26,8 @@ fieldset{
 }
 .optionHide{
 	visibility:hidden;
-	opacity:0;
 }
 .jsLabelText{
 	display:inline-block;
 	padding:0 10px 0 0;
-}
-.jsTransistion{
-    opacity:1.0;
-    transition:opacity 4s;
-    -webkit-transition:opacity 4s; /* Safari 3.1 to 6.0 */	
 }
