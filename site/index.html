@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="styles/main.css" />	
 </head>
 <body>
-	<div id="container" class="container center">
-		<form id="frm0">
+	<div id="container" class="container">
+		<form id="frm0" class="floatLeft">
 			<fieldset class="blockElements">
 				<p>Populate array string:</p>
 				<input id="txtValuesForArray" class="text txtValuesForArray floatLeft" type="text" value="" />
@@ -28,8 +28,10 @@
 				<input id="txtRemoveLastElement" class="text txtValuesForArray hide" type="text" value="" />
 				<input id="btnPrintAfterPop" class="button" type="button" value="Revise Array" />				
 			</fieldset>						
-			<fieldset id="result" class="result hide optionHide"></fieldset>			
 		</form>
+		<table class="containerData">
+			<tbody id="result" class="result hide optionHide"></tbody>
+		</table>		
 	</div>	
 </body>
 <script type="text/javascript" src="scripts/base/jquery-1.11.2.js"></script>
