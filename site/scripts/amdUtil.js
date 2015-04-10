@@ -6,14 +6,26 @@ define(['amdRegex'], function(utilRegEx){
         var frag = d.createDocumentFragment();
         var nodeExist = options.nodeExist;
         var nodeText = d.createTextNode(options.text);
-        var nodeNew = d.createElement('div');
-        var nodeLabel = d.createElement('span');
+        var nodeNew = d.createElement('tr');
+        var nodeLabel = d.createElement('td');
+        var nodeCellText = d.createElement('td');        
+        var nodeContainerLabel = d.createElement('div');
+        var nodeContainerText = d.createElement('div');
         var nodeLabelText = d.createTextNode(options.label + ':');
         var strClass = null;
+        nodeContainerLabel.setAttribute('class', 'jsCellContentsLeft');
+        nodeContainerText.setAttribute('class', 'jsCellContentsRight');
+        nodeNew.setAttribute('class', 'jsRowData');
+
+        nodeContainerLabel.appendChild(nodeLabelText);
+
         nodeLabel.setAttribute('class', 'jsLabelText');
-        nodeLabel.appendChild(nodeLabelText);
+        nodeLabel.appendChild(nodeContainerLabel);
+        
         nodeNew.appendChild(nodeLabel);
-        nodeNew.appendChild(nodeText);
+        nodeContainerText.appendChild(nodeText);
+        nodeCellText.appendChild(nodeContainerText);
+        nodeNew.appendChild(nodeCellText);
         frag.appendChild(nodeNew);
         nodeExist.appendChild(frag);
         showNode(nodeExist);
