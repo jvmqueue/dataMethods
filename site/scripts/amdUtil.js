@@ -79,6 +79,7 @@ define(['amdRegex'], function(utilRegEx){
         populateLclArrayFromString:function(e){ // populate array from string
             var $textNode = $(e.data.textNode);
             var strFromNode = $textNode.val();
+            strFromNode = utilRegEx.fnc.removeEndChars(strFromNode, ' '); // remove any ending whitespace
             mArray = strFromNode.split(' ');
 
             appendFragment({
