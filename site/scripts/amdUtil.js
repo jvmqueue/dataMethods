@@ -1,13 +1,6 @@
 define(['amdRegex'], function(utilRegEx){
     var w = window, d = document, $ = jQuery;
     var mArray = []; // array to maintain state between calls
-
-    // Array listener
-    var listenerDataChange = function(){
-        console.group('LISTENER DATA CHANGE');
-            console.log('Reached');
-           console.groupEnd(); 
-    };
       
 
     var appendFragment = function(options){
