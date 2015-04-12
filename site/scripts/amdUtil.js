@@ -2,6 +2,14 @@ define(['amdRegex'], function(utilRegEx){
     var w = window, d = document, $ = jQuery;
     var mArray = []; // array to maintain state between calls
 
+    // Array listener
+    var listenerDataChange = function(){
+        console.group('LISTENER DATA CHANGE');
+            console.log('Reached');
+           console.groupEnd(); 
+    };
+      
+
     var appendFragment = function(options){
         var frag = d.createDocumentFragment();
         var nodeExist = options.nodeExist;
@@ -41,67 +49,131 @@ define(['amdRegex'], function(utilRegEx){
         }
     };
 
+    var updateDropDown = function(paramNodeId){
+        var strId = paramNodeId;
+        var $node = $('#' + strId);
+        var frag = d.createDocumentFragment();
+        var nodeNew = null;
+        var nodeText = null;
+        var mArrayLength = mArray.length;
+
+        $('#dropDwnRemoveElement option', '#frm0').remove(); // reset
+
+        nodeNew = d.createElement('option');
+        nodeText = d.createTextNode('Select a value');
+        nodeNew.appendChild(nodeText);
+        frag.appendChild(nodeNew);
+
+        if(mArray.length > 0){
+
+            for(var i = 0, len = mArrayLength; i < len; i++){
+                nodeNew = d.createElement('option');
+                nodeText = d.createTextNode(i);
+                nodeNew.appendChild(nodeText);
+                frag.appendChild(nodeNew);
+            }            
+        }
+        
+
+        $node.append(frag);
+    };
+
     var showOtherDisplayFields = function(){
         var $nodes = $('.optionHide');
          $nodes.removeClass('optionHide');
          $nodes.addClass('jsTransistion');
     };
 
+    var populateLclArrayFromString = function(paramNode){ // populate array from string
+        var strFromNode = $(paramNode).val();
+        strFromNode = utilRegEx.fnc.removeEndChars(strFromNode, ' '); // remove any ending whitespace
+        mArray = strFromNode.split(' ');
+
+        appendFragment({
+            label:'Initial Array Values',
+            nodeExist:d.getElementById('result'),
+            text:mArray.join()
+        });
+        
+        // array populated, show other page options
+        showOtherDisplayFields();        
+    };
+
+    var arrayShift = function(){
+        mArray.shift();
+
+        appendFragment({
+            label:'Array Values After Shift',
+            nodeExist:d.getElementById('result'),
+            text:mArray.join()
+        });
+    };
+    var arrayPop = function(){
+        mArray.pop();
+
+        appendFragment({
+            label:'Array Values After Pop',
+            nodeExist:d.getElementById('result'),
+            text:mArray.join()
+        });        
+    };
+
+    var removeElementAt = function(){
+        var intIndex = $('#dropDwnRemoveElement option:selected').index() - 1;
+
+        if(intIndex < 0){
+            return void(0);
+        }
+
+        var strFromRegEx = null;
+        delete mArray[intIndex]; // mArray[intIndex] now undefined, leaving element empty
+        var strFromArray = mArray.join(','); // allows us to use regEx
+
+        strFromRegEx = utilRegEx.fnc.removeAndReplaceChars(strFromArray, ',,', ','); // remove delineator, essentially removing empty values after delete method*/
+        strFromRegEx = utilRegEx.fnc.removeFirstChar(strFromRegEx, ','); // remove leading ','
+        strFromRegEx = utilRegEx.fnc.removeEndChars(strFromRegEx, ','); // remove 50 ending ','
+
+
+        mArray = strFromRegEx.split(','); // repopulate array after regEx work
+        appendFragment({
+            label:'Array Values After Remove Element',
+            nodeExist:d.getElementById('result'),
+            text:mArray.join()
+        });  
+
+
+        
+    }; // End removeElementAt
+
+    // TODO: every data change function should call this listener
+    // TODO: dataChange listener should act as a factory, switch block determines what action to perform relative to e.data
+
     var _fnc = { // intended public API
+        dataChange:function(e){
+            var nodeFrmData = e.data.textNode;
+            var target = e.target;
+            var strId = target.getAttribute('id');
+
+            // determine which control sent message
+            switch(strId){
+                case 'btnDropDwnRemoveElement':
+                    removeElementAt();                
+                    break;
+                case 'btnPopulateArray':
+                    populateLclArrayFromString(nodeFrmData);
+                    break;
+                case 'btnPrintAfterShift':
+                    arrayShift();
+                    break;              
+                case 'btnPrintAfterPop':
+                    arrayPop();
+                    break;                                      
+                default:
+            }
+            updateDropDown('dropDwnRemoveElement'); // update dropdown relative to mArray values
+        },        
         setListener:function(options){           
             options.$node.on(options.event, options.data, options.listener);
-        },
-        removeElementAt:function(e){
-            var $textNode = $(e.data.textNode);
-            var intIndex = parseInt( $textNode.val() );
-            var strFromRegEx = null;
-            delete mArray[intIndex]; // mArray[intIndex] now undefined, leaving element empty
-            var strFromArray = mArray.join(','); // allows us to use regEx
-
-            strFromRegEx = utilRegEx.fnc.removeAndReplaceChars(strFromArray, ',,', ','); // remove delineator, essentially removing empty values after delete method*/
-            strFromRegEx = utilRegEx.fnc.removeFirstChar(strFromRegEx, ','); // remove leading ','
-            strFromRegEx = utilRegEx.fnc.removeEndChars(strFromRegEx, ','); // remove 50 ending ','
-
-
-            mArray = strFromRegEx.split(','); // repopulate array after regEx work
-            appendFragment({
-                label:'Array Values After Remove Element',
-                nodeExist:d.getElementById('result'),
-                text:mArray.join()
-            });           
-        },
-        arrayShift:function(e){
-            mArray.shift();
-
-            appendFragment({
-                label:'Array Values After Shift',
-                nodeExist:d.getElementById('result'),
-                text:mArray.join()
-            });        
-        },
-        arrayPop:function(e){
-            mArray.pop();
-
-            appendFragment({
-                label:'Array Values After Pop',
-                nodeExist:d.getElementById('result'),
-                text:mArray.join()
-            });        
-        },        
-        populateLclArrayFromString:function(e){ // populate array from string
-            var $textNode = $(e.data.textNode);
-            var strFromNode = $textNode.val();
-            strFromNode = utilRegEx.fnc.removeEndChars(strFromNode, ' '); // remove any ending whitespace
-            mArray = strFromNode.split(' ');
-
-            appendFragment({
-                label:'Initial Array Values',
-                nodeExist:d.getElementById('result'),
-                text:mArray.join()
-            });
-            
-            // array populated, show other page options
-            showOtherDisplayFields();        
         },
         populateLclArrayFromHash:function(paramHash){
             var hash = paramHash;
