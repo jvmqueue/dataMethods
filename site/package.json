@@ -1,18 +1,19 @@
 {
-  "name": "patterns_flyweight",
+  "name": "data_management",
   "matchdep": "~0.1.2",
   "version": "1.0.0",
-  "description": "JvmQueue patterns flyweight",
+  "description": "JvmQueue managing data via array",
   "main": "scripts/main.js",
   "scripts": {
-    "test": "jvm.flyweight.gruntTest()"
+    "test": "util.fnc.gruntTest()"
   },
   "repository": {
     "type": "git",
-	"url": "https://github.com/jvmqueue/patterns.git"
+	"url": "https://github.com/jvmqueue/dataMethods"
   },
   "keywords": [
-    "patterns"
+    "data",
+    "management"
   ],
   "author": "glenn",
   "devDependencies": {
@@ -30,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/jvmqueue/jvmQueuePortfolio/issues"
   },
-  "homepage": "https://github.com/jvmqueue/jvmQueuePortfolio",
+  "homepage": "https://github.com/jvmqueue/dataMethods",
   "jshint": {
     "options": {
       "jshintrc": ".jshintrc"
