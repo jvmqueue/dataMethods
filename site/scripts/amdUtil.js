@@ -128,7 +128,7 @@ define(['amdRegex'], function(utilRegEx){
     var removeElementAt = function(){
         
         var intIndex = $('#dropDwnRemoveElement option:selected').index() - 1;
-        
+
         if(intIndex < 0){          
             return void(0);
         }
@@ -157,7 +157,6 @@ define(['amdRegex'], function(utilRegEx){
             var nodeFrmData = e.data.textNode;
             var target = e.target;
             var strId = target.getAttribute('id');
-            var blnArrayIsEmpty = checkIfArrayIsEmpty();
             // determine which control sent message
             switch(strId){
                 case 'btnDropDwnRemoveElement':
