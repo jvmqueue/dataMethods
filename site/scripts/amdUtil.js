@@ -57,7 +57,7 @@ define(['amdRegex'], function(utilRegEx){
         nodeNew.appendChild(nodeText);
         frag.appendChild(nodeNew);
 
-        if(mArray.length > 0){
+        if( (mArray.length > 0) && (mArray[0].length > 0) ){ // first element of empty array is empty string
 
             for(var i = 0, len = mArrayLength; i < len; i++){
                 nodeNew = d.createElement('option');
@@ -138,10 +138,8 @@ define(['amdRegex'], function(utilRegEx){
         
     }; // End removeElementAt
 
-    // TODO: every data change function should call this listener
-    // TODO: dataChange listener should act as a factory, switch block determines what action to perform relative to e.data
 
-    var _fnc = { // intended public API
+    var _fnc = { // public API
         dataChange:function(e){
             var nodeFrmData = e.data.textNode;
             var target = e.target;
