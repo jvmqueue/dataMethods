@@ -19,8 +19,9 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		jshint: {
 			  all: [
-				'scripts/modelCar.js',
-				'scripts/view.js'
+				'scripts/amdRegex.js',
+				'scripts/amdUtil.js',
+				'scripts/main.js'
 			  ]
 		},
 		csslint: {
