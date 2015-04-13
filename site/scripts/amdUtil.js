@@ -199,6 +199,9 @@ define(['amdRegex'], function(utilRegEx){
         },
         causeFocus:function(paramStrId){
             $('#' + paramStrId).focus();
+        },
+        gruntTest:function(){
+            $('body').append('Sucess Grunt Test');
         }        
 
     }; // End fnc
