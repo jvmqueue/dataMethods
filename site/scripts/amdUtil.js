@@ -131,7 +131,7 @@ define(['amdRegex'], function(utilRegEx){
 
     var removeElementAt = function(){
         
-        var intIndex = $('#dropDwnRemoveElement option:selected').index() - 1;
+        var intIndex = $('#dropDwnRemoveElement option:selected').index() - 1; // visitor's dropdown selection
 
         if(intIndex < 0){          
             return void(0);
@@ -143,7 +143,7 @@ define(['amdRegex'], function(utilRegEx){
 
         strFromRegEx = utilRegEx.fnc.removeAndReplaceChars(strFromArray, ',,', ','); // remove delineator, essentially removing empty values after delete method*/
         strFromRegEx = utilRegEx.fnc.removeFirstChar(strFromRegEx, ','); // remove leading ','
-        strFromRegEx = utilRegEx.fnc.removeEndChars(strFromRegEx, ','); // remove 50 ending ','
+        strFromRegEx = utilRegEx.fnc.removeEndChars(strFromRegEx, ','); // remove ending ','
 
 
         mArray = strFromRegEx.split(','); // repopulate array after regEx work
