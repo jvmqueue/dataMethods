@@ -44,7 +44,7 @@ module.exports = function(grunt){
 	   uglify: {
 			compress: {
 				files: {
-				  'scripts/minified/mainCompress.js': ['scripts/modelCar.js']
+				  'scripts/minified/mainCompress.js': ['scripts/amdRegex.js', 'scripts/amdUtil.js', 'scripts/main.js']
 				}
 			}
 		},
