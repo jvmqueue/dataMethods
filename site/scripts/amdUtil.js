@@ -42,6 +42,13 @@ define(['amdRegex'], function(utilRegEx){
         }
     };
 
+    var checkIfArrayIsEmpty = function(){
+        if( (mArray.length > 0) && (mArray[0].length > 0) ){ // first element of empty array is empty string        
+            return false;
+        }
+        return true;
+    };
+
     var updateDropDown = function(paramNodeId){
         var strId = paramNodeId;
         var $node = $('#' + strId);
@@ -49,6 +56,7 @@ define(['amdRegex'], function(utilRegEx){
         var nodeNew = null;
         var nodeText = null;
         var mArrayLength = mArray.length;
+        var blnArrayIsEmpty = null;
 
         $('#dropDwnRemoveElement option', '#frm0').remove(); // reset
 
@@ -57,16 +65,17 @@ define(['amdRegex'], function(utilRegEx){
         nodeNew.appendChild(nodeText);
         frag.appendChild(nodeNew);
 
-        if( (mArray.length > 0) && (mArray[0].length > 0) ){ // first element of empty array is empty string
-
+        blnArrayIsEmpty = checkIfArrayIsEmpty();
+        
+        
+        if(blnArrayIsEmpty === false){
             for(var i = 1, len = mArrayLength; i <= len; i++){
                 nodeNew = d.createElement('option');
                 nodeText = d.createTextNode(i);
                 nodeNew.appendChild(nodeText);
                 frag.appendChild(nodeNew);
-            }            
+            }
         }
-        
 
         $node.append(frag);
     };
@@ -78,6 +87,7 @@ define(['amdRegex'], function(utilRegEx){
     };
 
     var populateLclArrayFromString = function(paramNode){ // populate array from string
+
         var strFromNode = $(paramNode).val();
         strFromNode = utilRegEx.fnc.removeEndChars(strFromNode, ' '); // remove any ending whitespace
         mArray = strFromNode.split(' ');
@@ -93,6 +103,8 @@ define(['amdRegex'], function(utilRegEx){
     };
 
     var arrayShift = function(){
+        var blnArrayIsEmpty = checkIfArrayIsEmpty();
+        if(blnArrayIsEmpty === true){ return void(0); }
         mArray.shift();
 
         appendFragment({
@@ -102,6 +114,8 @@ define(['amdRegex'], function(utilRegEx){
         });
     };
     var arrayPop = function(){
+        var blnArrayIsEmpty = checkIfArrayIsEmpty();
+        if(blnArrayIsEmpty === true){ return void(0); }        
         mArray.pop();
 
         appendFragment({
