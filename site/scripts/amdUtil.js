@@ -59,7 +59,7 @@ define(['amdRegex'], function(utilRegEx){
 
         if( (mArray.length > 0) && (mArray[0].length > 0) ){ // first element of empty array is empty string
 
-            for(var i = 0, len = mArrayLength; i < len; i++){
+            for(var i = 1, len = mArrayLength; i <= len; i++){
                 nodeNew = d.createElement('option');
                 nodeText = d.createTextNode(i);
                 nodeNew.appendChild(nodeText);
