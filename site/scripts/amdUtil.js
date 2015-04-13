@@ -104,7 +104,7 @@ define(['amdRegex'], function(utilRegEx){
 
     var arrayShift = function(){
         var blnArrayIsEmpty = checkIfArrayIsEmpty();
-        if(blnArrayIsEmpty === true){ return void(0); }
+        
         mArray.shift();
 
         appendFragment({
@@ -115,7 +115,7 @@ define(['amdRegex'], function(utilRegEx){
     };
     var arrayPop = function(){
         var blnArrayIsEmpty = checkIfArrayIsEmpty();
-        if(blnArrayIsEmpty === true){ return void(0); }        
+
         mArray.pop();
 
         appendFragment({
@@ -126,9 +126,10 @@ define(['amdRegex'], function(utilRegEx){
     };
 
     var removeElementAt = function(){
+        
         var intIndex = $('#dropDwnRemoveElement option:selected').index() - 1;
-
-        if(intIndex < 0){
+        
+        if(intIndex < 0){          
             return void(0);
         }
 
@@ -146,9 +147,7 @@ define(['amdRegex'], function(utilRegEx){
             label:'Array Values After Remove Element',
             nodeExist:d.getElementById('result'),
             text:mArray.join()
-        });  
-
-
+        });
         
     }; // End removeElementAt
 
@@ -158,13 +157,14 @@ define(['amdRegex'], function(utilRegEx){
             var nodeFrmData = e.data.textNode;
             var target = e.target;
             var strId = target.getAttribute('id');
-
+            var blnArrayIsEmpty = checkIfArrayIsEmpty();
             // determine which control sent message
             switch(strId){
                 case 'btnDropDwnRemoveElement':
                     removeElementAt();                
                     break;
                 case 'btnPopulateArray':
+                    $('input[type=button]').removeAttr('disabled'); // reset
                     populateLclArrayFromString(nodeFrmData);
                     break;
                 case 'btnPrintAfterShift':
@@ -176,6 +176,10 @@ define(['amdRegex'], function(utilRegEx){
                 default:
             }
             updateDropDown('dropDwnRemoveElement'); // update dropdown relative to mArray values
+
+            if( (mArray.length === 0) || (!mArray[0]) ){
+                $('.jsTransistion input[type=button]').attr('disabled', 'disabled');
+            }
         },        
         setListener:function(options){           
             options.$node.on(options.event, options.data, options.listener);
