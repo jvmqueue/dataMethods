@@ -6,29 +6,33 @@ define(['amdRegex'], function(utilRegEx){
     var appendFragment = function(options){
         var frag = d.createDocumentFragment();
         var nodeExist = options.nodeExist;
-        var nodeText = d.createTextNode(options.text);
-        var nodeNew = d.createElement('tr');
-        var nodeLabel = d.createElement('td');
-        var nodeCellText = d.createElement('td');        
-        var nodeContainerLabel = d.createElement('div');
-        var nodeContainerText = d.createElement('div');
-        var nodeLabelText = d.createTextNode(options.label + ':');
-        var strClass = null;
-        nodeContainerLabel.setAttribute('class', 'jsCellContentsLeft');
-        nodeContainerText.setAttribute('class', 'jsCellContentsRight');
-        nodeNew.setAttribute('class', 'jsRowData');
+        var nodeContainer = {
+            label:d.createElement('div'),
+            text:d.createElement('div')
+        };
+        var nodeCell = {
+            label:d.createElement('td'),
+            text:d.createElement('td')
+        };
 
-        nodeContainerLabel.appendChild(nodeLabelText);
+        var nodeRow = d.createElement('tr');
 
-        nodeLabel.setAttribute('class', 'jsLabelText');
-        nodeLabel.appendChild(nodeContainerLabel);
-        
-        nodeNew.appendChild(nodeLabel);
-        nodeContainerText.appendChild(nodeText);
-        nodeCellText.appendChild(nodeContainerText);
-        nodeNew.appendChild(nodeCellText);
-        frag.appendChild(nodeNew);
+        nodeContainer.label.appendChild( d.createTextNode(options.label + ': ') );
+        nodeContainer.text.appendChild( d.createTextNode(options.text) );
+        nodeContainer.label.setAttribute('class', 'jsCellContentsLeft');
+        nodeContainer.text.setAttribute('class', 'jsCellContentsRight');        
+
+        nodeCell.label.appendChild(nodeContainer.label);
+        nodeCell.text.appendChild(nodeContainer.text);
+
+        nodeRow.appendChild(nodeCell.label);
+        nodeRow.appendChild(nodeCell.text);
+        nodeRow.setAttribute('class', 'jsRowData');
+
+        frag.appendChild(nodeRow);
+
         nodeExist.appendChild(frag);
+
         showNode(nodeExist);
     };
 
@@ -157,8 +161,8 @@ define(['amdRegex'], function(utilRegEx){
             var nodeFrmData = e.data.textNode;
             var target = e.target;
             var strId = target.getAttribute('id');
-            // determine which control sent message
-            switch(strId){
+            
+            switch(strId){ // determine which control sent message
                 case 'btnDropDwnRemoveElement':
                     removeElementAt();                
                     break;
