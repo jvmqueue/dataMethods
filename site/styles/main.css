@@ -62,6 +62,7 @@ fieldset{
 .button[disabled]{
 	background-position:-118px -51px;
 	color:#8DF;
+	cursor:default;
 }
 .result{
 	margin:20px 0;
