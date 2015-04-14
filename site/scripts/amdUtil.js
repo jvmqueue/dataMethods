@@ -168,6 +168,7 @@ define(['amdRegex'], function(utilRegEx){
                     break;
                 case 'btnPopulateArray':
                     $('input[type=button]').removeAttr('disabled'); // reset
+                    $('.containerData').removeClass('hide'); // reset
                     populateLclArrayFromString(nodeFrmData);
                     break;
                 case 'btnPrintAfterShift':
