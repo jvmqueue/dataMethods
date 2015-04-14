@@ -3,29 +3,30 @@
 <head>
 	<link rel="stylesheet" href="styles/main.css" />	
 </head>
-<body>
-	<div id="container" class="container">
+<body class="floatLeft page">
+	<div class="pageIcon"></div>
+	<div id="container" class="container floatLeft">
 		<form id="frm0" class="floatLeft">
 			<fieldset class="blockElements">
-				<p>Populate array string:</p>
+				<p class="caption">Populate array string:</p>
 				<input id="txtValuesForArray" class="text txtValuesForArray floatLeft" type="text" value="" />
 				<input id="btnPopulateArray" class="button" type="button" value="Populate Array" />
 				<p class="info">Use form: Hello World 1 2 Hello Universe</p>
 			</fieldset>	
 			<fieldset class="optionHide">
-				<p>Remove element at:</p>
+				<p class="caption">Remove element at:</p>
 				<select id="dropDwnRemoveElement">
 					<option id="optPrompt" value="prompt">Select a value</option>
 				</select>
 				<input id="btnDropDwnRemoveElement" class="button" type="button" value="Revise Array" />				
 			</fieldset>
 			<fieldset class="optionHide">
-				<p>Remove first element FIFO:</p>
+				<p class="caption">Remove first element FIFO:</p>
 				<input id="txtRemoveFirstElement" class="text txtValuesForArray hide" type="text" value="" />
 				<input id="btnPrintAfterShift" class="button" type="button" value="Revise Array" />				
 			</fieldset>			
 			<fieldset class="optionHide">
-				<p>Remove last element LIFO:</p>
+				<p class="caption">Remove last element LIFO:</p>
 				<input id="txtRemoveLastElement" class="text txtValuesForArray hide" type="text" value="" />
 				<input id="btnPrintAfterPop" class="button" type="button" value="Revise Array" />				
 			</fieldset>						
