@@ -1,6 +1,21 @@
 /* from general to specific */
 fieldset{
 	border-radius:10px;
+	width:100%;
+}
+.page{
+	background:#FFFFFF url(../images/main-background.jpg) no-repeat;
+}
+.pageIcon{
+	background:#FFFFFF url(../images/dotJs.jpg) no-repeat -123px -126px;
+	border-radius:66px;
+	width:136px;
+	height:136px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+
 }
 .floatLeft{
 	float:left;
@@ -10,20 +25,25 @@ fieldset{
 }
 .container{
 	font-family:sans-serif;
+	margin:90px 0 0 20%;
 	width:90%;
 	min-width:1000px;
 }
 .containerData{
 	border-radius:10px;
 	position:relative;
-	left:2%;
+	left:4%;
 	background-color:gray;
 	color:#FFFFFF;
 }
+ .caption{
+ 	color:#FFFFFF;
+ }
 .info{
 	background-color:#FFFAAE;
 }
 .txtValuesForArray{
+	margin-right:2%;
 	width:300px;
 }
 .button{
