@@ -44,6 +44,7 @@ fieldset{
  }
 .info{
 	background-color:#FFFAAE;
+	width:96%;
 }
 .txtValuesForArray{
 	margin-right:2%;
@@ -51,6 +52,12 @@ fieldset{
 }
 .button{
 	cursor:pointer;
+	color:#FFFAAE;
+	background:#FFFFFF url(../images/rustyTube.png) no-repeat -8px -7px;
+	border:solid 2px #BC8C66;
+}
+.button:hover{
+	background-position:-8px -30px; 
 }
 .result{
 	margin:20px 0;
