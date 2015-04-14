@@ -59,6 +59,10 @@ fieldset{
 .button:hover{
 	background-position:-8px -30px; 
 }
+.button[disabled]{
+	background-position:-118px -51px;
+	color:#8DF;
+}
 .result{
 	margin:20px 0;
 	border-radius:10px;
