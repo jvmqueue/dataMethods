@@ -5,6 +5,9 @@ fieldset{
 .floatLeft{
 	float:left;
 }
+.block{
+	display:block;
+}
 .container{
 	font-family:sans-serif;
 	width:90%;
@@ -17,14 +20,14 @@ fieldset{
 	background-color:gray;
 	color:#FFFFFF;
 }
-.block{
-	display:block;
-}
 .info{
 	background-color:#FFFAAE;
 }
 .txtValuesForArray{
 	width:300px;
+}
+.button{
+	cursor:pointer;
 }
 .result{
 	margin:20px 0;
