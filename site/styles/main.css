@@ -1,5 +1,6 @@
 /* from general to specific */
 fieldset{
+	border-color:#FB7600;
 	border-radius:10px;
 	width:100%;
 }
@@ -31,9 +32,11 @@ fieldset{
 }
 .containerData{
 	border-radius:10px;
+	border:solid 2px #FB7600;
+	padding:3px;
 	position:relative;
 	left:4%;
-	background-color:gray;
+	background-color:#6E0200;
 	color:#FFFFFF;
 }
  .caption{
@@ -53,7 +56,7 @@ fieldset{
 	margin:20px 0;
 	border-radius:10px;
 	padding:0 5px;
-	background-color:#CCCCCC;
+	background-color:#6E0200;
 }
 .hide{
 	visibility:hidden;
@@ -64,7 +67,6 @@ fieldset{
 }
 .jsRowData{
 	padding:3px 8px;
-	background-color:gray;
 }
 .jsTransistion{
 	opacity:1.0;
